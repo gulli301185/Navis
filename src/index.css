@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.slick-slide {
+  margin: 0 10px !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
