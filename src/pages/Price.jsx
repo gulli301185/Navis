@@ -6,66 +6,86 @@ const Price = () => {
       <h1 className="text-5xl font-semibold text-center">
         Безопасность — Ваш Лучший Инвестор!
       </h1>
-      <p className="text-xl text-center">
+      <p className="text-xl text-center text-gray-500">
         Доступные Цены на Проверку Криптоадресов!
       </p>
-      <div className="grid grid-cols-2 container gap-2 bg-gray-500">
+      <div className="grid grid-cols-2 container gap-4 ">
         {PriceInfo.map((priceItem) => (
           <div
             key={priceItem.id}
-            className="bg-gray-200 rounded-xl p-5 flex flex-col gap-4"
+            className="bg-gray-100 rounded-xl p-5 flex flex-col gap-6 hover:bg-black group"
           >
-            <div className="flex justify-between bg-red-200">
+            <div className="flex justify-between ">
               <div>
-                <h1 className="text-2xl font-semibold ">{priceItem.topic}</h1>
-                <p className="text-gray-500 w-1/2">{priceItem.text}</p>
+                <h1 className="text-2xl font-semibold group-hover:text-white">
+                  {priceItem.topic}
+                </h1>
+                <p className="text-gray-500 w-1/2 ">{priceItem.text}</p>
               </div>
               <div>
-                <h1 className="text-5xl font-bold text-end">
+                <h1 className="text-5xl font-bold text-end group-hover:text-white">
                   {priceItem.count}
                 </h1>
-                <p className="text-gray-500">{priceItem.check}</p>
+                <p className="text-gray-500 ">{priceItem.check}</p>
               </div>
             </div>
-            <div className="flex justify-between bg-pink-300 ">
-              <div className=" bg-pink-600 font-semibold text-lg flex flex-col gap-2 px-4">
+            <div className="flex gap-16  ">
+              <div className="font-bold text-lg flex flex-col gap-4  ">
                 <div className="flex gap-2">
                   <img src={priceItem.img} alt="" />
-                  <p>{priceItem.checking}</p>
+                  <p className="leading-tight group-hover:text-gray-600">
+                    {priceItem.checking}
+                  </p>
                 </div>
                 <div className="flex gap-2 items-center ">
                   <img src={priceItem.img} alt="" />
-                  <p>{priceItem.blockchein}</p>
+                  <p className="leading-tight group-hover:text-gray-600">
+                    {priceItem.blockchein}
+                  </p>
                 </div>
                 <div className="flex gap-2 items-center">
                   <img src={priceItem.img} alt="" />
-                  <p>{priceItem.monotoring}</p>
+                  <p className="leading-tight group-hover:text-gray-600">
+                    {priceItem.monotoring}
+                  </p>
                 </div>
                 <div className="flex gap-2 items-center">
                   <img src={priceItem.img} alt="" />
-                  <p>{priceItem.balance}</p>
+                  <p className="leading-tight group-hover:text-gray-600">
+                    {priceItem.balance}
+                  </p>
                 </div>
               </div>
-              <div className="bg-yellow-500">
+              <div className=" flex flex-col gap-4 ">
                 <div className="flex gap-2">
                   <img src={priceItem.img} alt="" />
-                  <p>{priceItem.service}</p>
+                  <p className="group-hover:text-gray-600">
+                    {priceItem.service}
+                  </p>
                 </div>
                 <div className="flex gap-2 items-center ">
                   <img src={priceItem.img} alt="" />
-                  <p>{priceItem.sanksyi}</p>
+                  <p className="group-hover:text-gray-600">
+                    {priceItem.sanksyi}
+                  </p>
                 </div>
                 <div className="flex gap-2 items-center">
                   <img src={priceItem.img} alt="" />
-                  <p>{priceItem.discount}</p>
+                  <p className="group-hover:text-gray-600">
+                    {priceItem.discount}
+                  </p>
                 </div>
                 <div className="flex gap-2 items-center">
                   <img src={priceItem.img} alt="" />
-                  <p>{priceItem.program}</p>
+                  <p className="group-hover:text-gray-600">
+                    {priceItem.program}
+                  </p>
                 </div>
               </div>
             </div>
-            <button className="bg-orange-600 rounded-xl py-3">Проверить</button>
+            <button className="bg-orange-600 rounded-xl py-3 group-hover:bg-gradient-to-tr from-green-600 to-orange-500">
+              Проверить
+            </button>
           </div>
         ))}
       </div>

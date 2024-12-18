@@ -11,6 +11,14 @@ import ServiceCard from "../entities/serviceCard/ServiceCard";
 import Client from "../entities/client/Client";
 import Analize from "../pages/Analize";
 import Price from "../pages/Price";
+import Profile from "../pages/Profile";
+import { HelpInfo } from "../pages/HelpInfo";
+import TariffPage from "../pages/TariffPage";
+import Integration from "../pages/Integration";
+import ComplaneDetails from "../pages/ComplaneDetails";
+import CheckingComplanePage from "../pages/CheckingComplanePage";
+import CheckingPage from "../pages/CheckingPage";
+import { CheckResult} from "../entities/checking/CheckResult";
 
 export const routes = createBrowserRouter([
   {
@@ -26,6 +34,14 @@ export const routes = createBrowserRouter([
       { element: <Client />, path: "partner" },
       { element: <Analize />, path: "analize" },
       { element: <Price />, path: "price" },
+      { element: <Profile />, path: "profile" },
+      { element: <HelpInfo />, path: "help" },
+      { element: <TariffPage />, path: "tariff" },
+      { element: <Integration />, path: "integration" },
+      { element: <CheckingComplanePage />, path: "check" },
+      { element: <ComplaneDetails />, path: "checkDetail" },
+      { element: <CheckingPage />, path: "checking" },
+      { element: <CheckResult />, path: "result" },
     ],
   },
 

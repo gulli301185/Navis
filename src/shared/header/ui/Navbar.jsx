@@ -20,7 +20,7 @@ const NavItems = [
   {
     id: "4",
     title: "FAQ",
-    page: "faq",
+    page: "checking",
   },
   {
     id: "5",

@@ -49,7 +49,7 @@ const Footer = () => {
                   Услуги
                 </Link>
                 <li>Отзывы</li>
-                <li>Прайс</li>
+                <Link to="/price">Прайс</Link>
                 <Link to="/news">Новости</Link>
               </ul>
             </div>

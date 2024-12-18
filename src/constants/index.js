@@ -16,6 +16,7 @@ import newsLogo3 from "../assets/newsIcon/photo (3).png";
 import bitcoin from "../assets/bitcoinIcons/logo (2).png";
 import checkIcon from "../assets/accadionIcons/check.png";
 import logoButton from "../assets/cardIcon/button.png";
+import logo1 from "../assets/bitcoinIcons/options.png";
 
 export const AccardionInfo = [
   {
@@ -195,7 +196,7 @@ export const ProtectedServiceData = [
   },
   {
     id: "2",
-    logo: serviceIcon2,
+    logo: serviceIcon3,
     topic: "Уведомления в реальном времени",
     text: "Оптимизированный и автоматизированный процесс верификации позволяет вашему бизнесу быстро привлекать клиентов, снижая ручные усилия и минимизируя риски идентификационного мошенничества и незаконной активности.",
   },
@@ -213,7 +214,7 @@ export const ProtectedServiceData = [
   },
   {
     id: "5",
-    logo: serviceIcon3,
+    logo: serviceIcon2,
     topic: "Помощь",
     text: "Запустите свой криптовалютный проект с легкостью, простотой и уверенностью, используя наш консалтинг по вопросам AML и KYC, обеспечивающий беспрепятственное соблюдение требований и эффективное управление рисками с самого начала.",
   },
@@ -240,7 +241,7 @@ export const AllAboutNews = [
     id: "2",
     logo: newsLogo2,
     time: "3 мин чтения",
-    topic: "Как изменятся правила ПОД в 2023 году",
+    topic: "Как изменятся правила ПОД в 2023 году ",
     news: "AMLBot автоматизируМотивация организованной преступности — деньги, которые преступники могут на этом заработать. Если лишить их доступа к финансовым системам, уровень преступности может резко снизиться. ет AML / KYC процедуры и снижает расходы на соблюдение требований законодательства автоматизирует AML / KYC процедуры и снижает расходы на соблюдение требований законодательства",
     secondTopic: "Обзор изменений в правилах ПОД в 2023 году",
     fullNews:
@@ -445,5 +446,53 @@ export const Blockchein = [
     id: "10",
     logo: bitcoin,
     text: "Bitcoin",
+  },
+];
+
+export const historyData = [
+  {
+    id: "1",
+    address: "0x1234567890abcdef1234567890abcdef12345678",
+    date: "2024-12-17 10:30",
+    result: "Успех",
+  },
+  {
+    id: "2",
+    address: "0xabcdefabcdefabcdefabcdefabcdefabcdefabcdef",
+    date: "2024-12-16 15:45",
+    result: "Ошибка",
+  },
+  {
+    id: "3",
+    address: "0x234567890abcdef1234567890abcdef23456789",
+    date: "2024-12-15 18:20",
+    result: "Успех",
+  },
+];
+
+export const walletData = [
+  {
+    id: "1",
+    image: logo1,
+    about: "текущий баланс",
+    balance: "$790",
+  },
+  {
+    id: "2",
+    image: logo1,
+    about: "текущий баланс",
+    balance: "$790",
+  },
+  {
+    id: "3",
+    image: logo1,
+    about: "текущий баланс",
+    balance: "$790",
+  },
+  {
+    id: "4",
+    image: logo1,
+    about: "текущий баланс",
+    balance: "$790",
   },
 ];

@@ -42,11 +42,9 @@ const NewsDetail = () => {
                 <div className="px-8 gap-4 min-h-16 text-start py-4 mx-auto justify-center flex flex-col">
                   <h5 className="text-gray-500">{news.time}</h5>
                   <h1 className="text-3xl font-semibold">{news.topic}</h1>
-                  <p className="text-lg text-gray-700">{news.news}</p>
-                  <h1 className="text-2xl font-bold pt-16">
-                    {news.secondTopic}
-                  </h1>
-                  <p className="text-lg text-gray-700">{news.fullNews}</p>
+                  <p className="text-lg text-gray-700 line-clamp-2">
+                    {news.news}
+                  </p>
                 </div>
               </Link>
             ))}

@@ -88,9 +88,9 @@ const Profile = ({ className, onclick, value }) => {
                   Ключ доступа не установлен. Доступ через API отключен
                 </p>
               </div>
-              <Button className="w-[156px] text-red-600 flex  items-center border-red-600 font-bold justify-center">
+              <button className="w-[156px] text-red-600 flex border-2 rounded-xl items-center border-red-600 font-bold justify-center">
                 Получить ключ
-              </Button>
+              </button>
             </div>
             <div className=" bg-white  rounded-xl py-4 flex justify-between px-4">
               <div>
@@ -110,16 +110,16 @@ const Profile = ({ className, onclick, value }) => {
                 </h1>
                 <div>............</div>
               </div>
-              <Button className="w-[156px] text-red-600 flex  items-center border-red-600 font-bold justify-center">
+              <button className="w-[156px] text-red-600 flex  items-center border-red-600 border-2 rounded-xl font-bold justify-center">
                 Изменить
-              </Button>
+              </button>
             </div>
           </div>
         </div>
         {changeData && (
           <div className="fixed inset-0 bg-gray-500 bg-opacity-50 z-50 flex justify-center items-center">
             <div className="bg-white p-8 rounded-2xl w-[500px] shadow-lg">
-              <div className="flex mx-auto justify-end p-5">
+              <div className="flex mx-auto justify-end p-5 ">
                 <h2 className="text-2xl font-bold px-8">
                   Изменить личные данные
                 </h2>
@@ -129,18 +129,18 @@ const Profile = ({ className, onclick, value }) => {
                 <label htmlFor="name" className="block text-black mb-2">
                   ФИО:
                 </label>
-                <Input
+                <input
                   value="Нурзида Асанбековна"
-                  className="bg-slate-200 text-black "
+                  className="bg-slate-200 text-black w-full rounded-xl py-3 pl-4"
                 />
               </div>
               <div className="mb-8">
                 <label htmlFor="email" className="block text-black mb-2">
                   Электронная почта:
                 </label>
-                <Input
+                <input
                   value="nurziasanbekova@gmail.com"
-                  className="bg-slate-200 text-black "
+                  className="bg-slate-200 text-black w-full rounded-xl py-3 pl-4"
                 />
               </div>
               <button onClick={saveChanges} className=" w-full  border-2  rounded-md py-3 bg-gradient-to-r from-red-500 to-orange-600 text-white mx-auto flex items-center justify-center">
