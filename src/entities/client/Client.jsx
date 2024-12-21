@@ -1,7 +1,8 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { Partners } from "../../constants";
+import { useQuery } from "@tanstack/react-query";
+import { getPartnersAsync } from "../../api/partners";
 
 const Client = () => {
   const settings = {
@@ -34,18 +35,23 @@ const Client = () => {
     ],
   };
 
+  const { data } = useQuery({
+    queryKey: ["partner"],
+    queryFn: getPartnersAsync,
+  });
   return (
     <div className="pt-40">
       <h1 className="pb-9 text-center text-4xl font-semibold">
         Наши довольные клиенты и партнеры
       </h1>
       <Slider {...settings} className="max-w-full">
-        {Partners.map((partner) => (
+        {data?.map((partner) => (
           <div
             key={partner.id}
-            className="bg-slate-300 rounded-lg  h-[100px] pt-8"
+            className="bg-slate-300 rounded-lg text-center flex flex-col p-5 "
           >
-            <img src={partner.logo} alt="" className="mx-auto " />
+            <img src={partner.image} alt="" className="mx-auto w-32 pb-3" />
+            <a href="">{partner.url}</a>
           </div>
         ))}
       </Slider>

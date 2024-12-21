@@ -1,11 +1,12 @@
+import { Link } from "react-router";
 import arrowIcon from "../assets/accadionIcons/arrows.png";
 
 const ComplaneDetails = () => {
   return (
     <div className="container mx-auto py-10 flex flex-col gap-6">
-      <div>
+      <Link to="/check">
         <img src={arrowIcon} className="object-contain" />
-      </div>
+      </Link>
       <h1 className="text-5xl font-semibold">
         Жалоба на подозрительный криптоадрес
       </h1>

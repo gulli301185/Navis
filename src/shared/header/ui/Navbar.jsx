@@ -20,12 +20,12 @@ const NavItems = [
   {
     id: "4",
     title: "FAQ",
-    page: "checking",
+    page: "question",
   },
   {
     id: "5",
     title: "Блог",
-    page: "news",
+    page: "allNews",
   },
   {
     id: "6",

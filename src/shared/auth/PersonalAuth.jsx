@@ -1,19 +1,60 @@
 import { useState } from "react";
 import authBanner from "../../assets/bitcoinBanner/authBanner.png";
 import mainLogo from "../../assets/headerIcons/Union.svg";
-import Button from "../../components/ui/Button";
-import Input from "../../components/ui/Input";
+
 import showIcon from "../../assets/accadionIcons/showIcon.png";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useFormik } from "formik";
+import { useMutation } from "@tanstack/react-query";
+import { postLoginAsync } from "../../api/login";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object({
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
+});
 
 export const PersonalAuth = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  const postLoginQuery = useMutation({
+    mutationFn: postLoginAsync,
+    onSuccess: (data, da) => {
+      navigate("/");
+      console.log(da, "da");
+
+      localStorage.setItem("token", JSON.stringify(da));
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      otp: "optsff",
+    },
+    onSubmit: (newValues) => {
+      postLoginQuery.mutate(newValues);
+    },
+    validationSchema: validationSchema,
+  });
 
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
   return (
-    <div className="container flex mx-auto py-8 gap-4 h-full w-full">
+    <form
+      onSubmit={formik.handleSubmit}
+      className="container flex mx-auto py-8 gap-4 h-full w-full"
+    >
       <div className="w-full h-full">
         <img src={authBanner} alt="" />
       </div>
@@ -31,6 +72,9 @@ export const PersonalAuth = () => {
           <div className="flex flex-col w-full gap-2">
             <label className="font-bold ">Электронная почта</label>
             <input
+              name="email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
               placeholder="Электронная почта"
               className="bg-gray-100 text-gray-500 outline-none  py-3 rounded-lg pl-4"
             />
@@ -38,6 +82,9 @@ export const PersonalAuth = () => {
           <div className="flex flex-col w-full gap-2">
             <label className="font-bold ">Пароль</label>
             <input
+              name="password"
+              onChange={formik.handleChange}
+              value={formik.values.password}
               type="password"
               placeholder="Пароль"
               className="bg-gray-100 text-gray-500 outline-none  py-3 rounded-lg pl-4"
@@ -62,9 +109,12 @@ export const PersonalAuth = () => {
               Забыли пароль ?
             </a>
           </div>
-          <Button className="my-3 bg-orange-700 outline-none text-white items-center justify-center flex">
+          <button
+            type="submit"
+            className="my-3 bg-orange-700 outline-none text-white items-center justify-center flex"
+          >
             Войти
-          </Button>
+          </button>
           <div className="text-gray-500 flex justify-center ">
             Еще нет аккаунта?
             <Link
@@ -76,6 +126,6 @@ export const PersonalAuth = () => {
           </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 };

@@ -1,13 +1,41 @@
-import Input from "../components/ui/Input";
-import Button from "../components/ui/Button";
 import NoteIcon from "../assets/accadionIcons/ic_notifications_none_48px.png";
 import toggleIcon from "../assets/accadionIcons/toogles.png";
 import logoutIcon from "../assets/accadionIcons/logout.png";
 import closeIcon from "../assets/accadionIcons/close.png";
 import { useState } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { getProfileAsync, patchProfileAsync } from "../api/profil";
+import { Switch } from "@mantine/core";
+import { useFormik } from "formik";
 
-const Profile = ({ className, onclick, value }) => {
+const Profile = () => {
   const [changeData, setChangeData] = useState(false);
+
+  const { data } = useQuery({
+    queryKey: ["profile"],
+    queryFn: getProfileAsync,
+  });
+
+  const patchUserProfileMutation = useMutation({
+    mutationFn: patchProfileAsync,
+    onSuccess: () => {
+      setChangeData(false);
+    },
+    onError: () => {},
+  });
+
+  const formik = useFormik({
+    initialValues: data || {
+      full_name: "",
+      email: "",
+      is_two_factor_enabled: "",
+    },
+    enableReinitialize: true,
+    onSubmit: (newValue) => {
+      patchUserProfileMutation.mutate(newValue);
+    },
+  });
+  console.log(formik.values);
 
   const changeHandle = () => {
     setChangeData(!changeData);
@@ -15,11 +43,6 @@ const Profile = ({ className, onclick, value }) => {
 
   const closeModal = () => {
     console.log("Закрыть модалку");
-    setChangeData(false);
-  };
-
-  const saveChanges = () => {
-    console.log("Сохранение изменений");
     setChangeData(false);
   };
 
@@ -35,13 +58,19 @@ const Profile = ({ className, onclick, value }) => {
                 <label htmlFor="" className=" text-gray-400 pl-3 ">
                   ФИО:
                 </label>
-                <Input value="Нурзида Асанбековна" className="" />
+                <input
+                  value={data?.full_name}
+                  className="py-4 bg-gray-200 rounded-xl w-full"
+                />
               </div>
               <div>
                 <label htmlFor="" className="pl-3 text-gray-400">
                   Электронная почта:
                 </label>
-                <Input value="nurziasanbekova@gmail.com" />
+                <input
+                  value={data?.email}
+                  className="py-4 bg-gray-200 rounded-xl w-full"
+                />
               </div>
               <div className="p-3">
                 <button
@@ -101,7 +130,11 @@ const Profile = ({ className, onclick, value }) => {
                   Включите 2FA, чтобы повысить безопасность вашего аккаунта.
                 </p>
               </div>
-              <img src={toggleIcon} alt="" className="object-contain pr-2" />
+              <Switch
+                checked={data?.is_two_factor_enabled}
+                color="red"
+                className="items-center flex justify-center"
+              />
             </div>
             <div className=" bg-white  rounded-xl py-4 flex justify-between px-4">
               <div>
@@ -117,20 +150,30 @@ const Profile = ({ className, onclick, value }) => {
           </div>
         </div>
         {changeData && (
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-50 z-50 flex justify-center items-center">
+          <form
+            onSubmit={formik.handleSubmit}
+            className="fixed inset-0 bg-gray-500 bg-opacity-50 z-50 flex justify-center items-center"
+          >
             <div className="bg-white p-8 rounded-2xl w-[500px] shadow-lg">
               <div className="flex mx-auto justify-end p-5 ">
                 <h2 className="text-2xl font-bold px-8">
                   Изменить личные данные
                 </h2>
-                <img src={closeIcon} alt="" className="object-contain pt-2" onClick={closeModal} />
+                <img
+                  src={closeIcon}
+                  alt=""
+                  className="object-contain pt-2"
+                  onClick={closeModal}
+                />
               </div>
               <div className="mb-8">
                 <label htmlFor="name" className="block text-black mb-2">
                   ФИО:
                 </label>
                 <input
-                  value="Нурзида Асанбековна"
+                  name="full_name"
+                  onChange={formik.handleChange}
+                  value={formik.values.full_name}
                   className="bg-slate-200 text-black w-full rounded-xl py-3 pl-4"
                 />
               </div>
@@ -139,15 +182,20 @@ const Profile = ({ className, onclick, value }) => {
                   Электронная почта:
                 </label>
                 <input
-                  value="nurziasanbekova@gmail.com"
+                  name="email"
+                  onChange={formik.handleChange}
+                  value={formik.values.email}
                   className="bg-slate-200 text-black w-full rounded-xl py-3 pl-4"
                 />
               </div>
-              <button onClick={saveChanges} className=" w-full  border-2  rounded-md py-3 bg-gradient-to-r from-red-500 to-orange-600 text-white mx-auto flex items-center justify-center">
+              <button
+                type="submit"
+                className=" w-full  border-2  rounded-md py-3 bg-gradient-to-r from-red-500 to-orange-600 text-white mx-auto flex items-center justify-center"
+              >
                 Сохранить изменения
               </button>
             </div>
-          </div>
+          </form>
         )}
       </div>
     </div>

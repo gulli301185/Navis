@@ -1,22 +1,61 @@
 import { useState } from "react";
 import authBanner from "../../assets/bitcoinBanner/authBanner.png";
 import mainLogo from "../../assets/headerIcons/Union.svg";
-
 import showIcon from "../../assets/accadionIcons/showIcon.png";
 import { Link } from "react-router";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useMutation } from "@tanstack/react-query";
+import { postRegistrationAsync } from "../../api/registration";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { PasswordInput, TextInput } from "@mantine/core";
+
+const validationSchema = Yup.object({
+  email: Yup.string()
+    .email("Неверный формат электронной почты")
+    .required("Электронная почта обязательна"),
+  password: Yup.string()
+    .min(6, "Пароль должен содержать минимум 6 символов")
+    .required("Пароль обязателен"),
+  confirm_password: Yup.string()
+    .oneOf([Yup.ref("password"), null], "Пароли не совпадают")
+    .required("Повторите пароль обязателен"),
+});
 
 export const Registration = () => {
-  const [showPassword, setShowPassword] = useState(false);
+  const postRegistrationQuery = useMutation({
+    mutationFn: postRegistrationAsync,
+    onSuccess: () => {
+      toast.success("Регистрация прошла успешно!");
+    },
+    onError: (error) => {
+      toast.error("Ошибка регистрации: " + error.message);
+    },
+  });
 
-  const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
-  };
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      confirm_password: "",
+    },
+    validationSchema,
+    onSubmit: (newValues) => {
+      console.log("Submit values:", newValues);
+      postRegistrationQuery.mutate(newValues);
+    },
+  });
+
   return (
-    <div className="container flex mx-auto py-8 gap-4 h-full w-full">
+    <form
+      onSubmit={formik.handleSubmit}
+      className="container flex mx-auto py-8 gap-4 h-full w-full"
+    >
       <div className="w-full h-full">
         <img src={authBanner} alt="" />
       </div>
-      <div className="flex flex-col items-center justify-between  w-full">
+      <div className="flex flex-col items-center justify-between w-full">
         <div className="flex justify-between flex-col h-full">
           <div className="text-xl font-bold mx-auto">
             <img src={mainLogo} alt="" className="py-3" />
@@ -26,86 +65,94 @@ export const Registration = () => {
             Создать аккаунт
           </h1>
         </div>
-        <div className=" w-full p-5 relative flex flex-col gap-6">
-          <div className="flex flex-col w-full gap-2">
-            <label className="font-bold ">Электронная почта</label>
-            <input
-              type="text"
-              placeholder="Электронная почта"
-              className="bg-gray-100 text-gray-500 outline-none  py-3 rounded-lg pl-4"
-            />
-          </div>
-          <div>
-            <div className="flex flex-col w-full gap-2">
-              <label className="font-bold ">Пароль</label>
-              <input
-                type="password"
-                placeholder="Пароль"
-                className="bg-gray-100 text-gray-500 outline-none  py-3 rounded-lg pl-4"
-              />
-            </div>
-            <button
-              onClick={togglePasswordVisibility}
-              className="absolute lg:top-[35%] md:top[30%] top-[28%] right-20 transform -translate-y-1/2 text-gray-500"
-            >
-              {showPassword ? (
-                <span role="img" aria-label="Hide" className="text-xl">
-                  👁️
-                </span>
-              ) : (
-                <span role="img" aria-label="Show" className="text-xl">
-                  <img src={showIcon} alt="" />
-                </span>
-              )}
-            </button>
-          </div>
+        <div to="/personal" className="w-full p-5 flex flex-col gap-6">
+          <TextInput
+            styles={{
+              input: {
+                backgroundColor: "#f7f7f7",
+                color: "#6b7280",
+                padding: "25px",
+                borderRadius: "8px",
+                border: "none",
+                fontSize: "14px",
+              },
+            }}
+            label="Электронная почта"
+            name="email"
+            onChange={formik.handleChange}
+            value={formik.values.email}
+            type="text"
+            placeholder="Электронная почта"
+            error={
+              formik.errors.email && formik.touched.email && formik.errors.email
+            }
+          />
 
-          <div className="flex flex-col w-full gap-2">
-            <label className="font-bold ">Повторите пароль</label>
-            <input
-              type="password"
-              placeholder="Повторите пароль"
-              className="bg-gray-100 text-gray-500 outline-none  py-3 rounded-lg pl-4"
-            />
-          </div>
+          <PasswordInput
+            styles={{
+              input: {
+                backgroundColor: "#f7f7f7",
+                color: "#6b7280",
+                padding: "25px",
+                borderRadius: "8px",
+                border: "none",
+                fontSize: "14px",
+              },
+            }}
+            name="password"
+            onChange={formik.handleChange}
+            value={formik.values.password}
+            label="Пароль"
+            placeholder="Пароль"
+            error={
+              formik.errors.password &&
+              formik.touched.password &&
+              formik.errors.password
+            }
+          />
+
+          <PasswordInput
+            styles={{
+              input: {
+                backgroundColor: "#f7f7f7",
+                color: "#6b7280",
+                padding: "25px",
+                borderRadius: "8px",
+                border: "none",
+                fontSize: "14px",
+              },
+            }}
+            name="confirm_password"
+            onChange={formik.handleChange}
+            value={formik.values.confirm_password}
+            label="Повторите пароль"
+            placeholder="Повторите пароль"
+            error={
+              formik.errors.confirm_password &&
+              formik.touched.confirm_password &&
+              formik.errors.confirm_password
+            }
+          />
+
           <button
-            onClick={togglePasswordVisibility}
-            className="absolute lg:top-[55%] md:top[48%] top-[45%] right-20 transform -translate-y-1/2 text-gray-500"
+            type="submit"
+            className="bg-orange-600 outline-none text-white items-center justify-center flex rounded-lg py-3"
           >
-            {showPassword ? (
-              <span role="img" aria-label="Hide" className="text-xl">
-                👁️
-              </span>
-            ) : (
-              <span role="img" aria-label="Show" className="text-xl">
-                <img src={showIcon} alt="" />
-              </span>
-            )}
-          </button>
-          <div className="flex gap-2 items-center">
-            <input
-              type="checkbox"
-              className="min-w-6 min-h-6 rounded-xl text-gray-600 "
-            />
-            <p className="text-gray-500 leading-tight">
-              Нажимая на кнопку «Отправить заявку», я принимаю условия{" "}
-              <div className="text-red-600">Пользовательского соглашения</div>
-            </p>
-          </div>
-          <button className=" bg-orange-600 outline-none text-white items-center justify-center flex rounded-lg py-3">
             Создать аккаунт
           </button>
           <div className="text-gray-500 flex justify-center ">
-            У вас уже есть аккаунт ?{" "}
+            Уже есть аккаунт аккаунта?
             <Link
               to="/personal"
               className="text-red-600 ml-2 border-b-2 border-red-600 font-bold"
             >
-              Войти{" "}
+              Войти
             </Link>{" "}
           </div>
         </div>
       </div>
-    </div>
+
+      <ToastContainer />
+    </form>
   );
 };

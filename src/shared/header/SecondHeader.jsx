@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink, Outlet } from "react-router";
 import homeIcon from "../../assets/accadionIcons/Vector.png";
 
 export const headerItems = [
@@ -6,31 +6,31 @@ export const headerItems = [
     id: "1",
     img: homeIcon,
     topic: "Проверка AML",
-    page:"check"
+    page: "check",
   },
   {
     id: "2",
     img: homeIcon,
     topic: "Интеграция",
-    page:"integration"
+    page: "integration",
   },
   {
     id: "3",
     img: homeIcon,
     topic: "Тарифы",
-    page:"tariff"
+    page: "tariff",
   },
   {
     id: "4",
     img: homeIcon,
     topic: "Профиль",
-    page:"profile"
+    page: "profile",
   },
   {
     id: "5",
     img: homeIcon,
     topic: " Помощь",
-    page:"help"
+    page: "help",
   },
 ];
 
@@ -42,7 +42,7 @@ const SecondHeader = () => {
           <NavLink
             key={item.id}
             to={item.page}
-            className="flex gap-3 group relative" 
+            className="flex gap-3 group relative"
           >
             <img src={item.img} alt={item.topic} className="w-6 h-6" />
             <p className="font-semibold">{item.topic}</p>
@@ -52,9 +52,9 @@ const SecondHeader = () => {
         ))}
       </div>
       <hr className="w-full h-0.5 border-0 bg-gray-500 mt-2" />
+      <Outlet />
     </div>
   );
 };
 
 export default SecondHeader;
-

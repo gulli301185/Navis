@@ -18,7 +18,9 @@ import Integration from "../pages/Integration";
 import ComplaneDetails from "../pages/ComplaneDetails";
 import CheckingComplanePage from "../pages/CheckingComplanePage";
 import CheckingPage from "../pages/CheckingPage";
-import { CheckResult} from "../entities/checking/CheckResult";
+import { CheckResult } from "../entities/checking/CheckResult";
+import SecondHeader from "../shared/header/SecondHeader";
+import PopularQuestion from "../entities/questions/PopularQuestion";
 
 export const routes = createBrowserRouter([
   {
@@ -27,7 +29,7 @@ export const routes = createBrowserRouter([
     children: [
       { element: <Home />, path: "/" },
       { element: <About />, path: "about" },
-      { element: <AllNews />, path: "news" },
+      { element: <AllNews />, path: "allNews" },
       { element: <NewsDetail />, path: "news/:id" },
       { element: <Protectedervice />, path: "protectedService" },
       { element: <ServiceCard />, path: "service" },
@@ -38,10 +40,23 @@ export const routes = createBrowserRouter([
       { element: <HelpInfo />, path: "help" },
       { element: <TariffPage />, path: "tariff" },
       { element: <Integration />, path: "integration" },
-      { element: <CheckingComplanePage />, path: "check" },
+      { element: <PopularQuestion />, path: "question" },
+      // { element: <CheckingComplanePage />, path: "checking" },
       { element: <ComplaneDetails />, path: "checkDetail" },
-      { element: <CheckingPage />, path: "checking" },
       { element: <CheckResult />, path: "result" },
+      {
+        element: <SecondHeader />,
+        path: "secondHeader",
+        children: [
+          { index: true, element: <CheckingPage /> },
+          { element: <Profile />, path: "profile" },
+          { element: <HelpInfo />, path: "help" },
+          { element: <TariffPage />, path: "tariff" },
+          { element: <Integration />, path: "integration" },
+          { element: <CheckingPage />, path: "check" },
+          { element: <ComplaneDetails />, path: "checkDetail" },
+        ],
+      },
     ],
   },
 

@@ -17,6 +17,7 @@ import bitcoin from "../assets/bitcoinIcons/logo (2).png";
 import checkIcon from "../assets/accadionIcons/check.png";
 import logoButton from "../assets/cardIcon/button.png";
 import logo1 from "../assets/bitcoinIcons/options.png";
+import closeIcon from "../assets/accadionIcons/Vector (2).png";
 
 export const AccardionInfo = [
   {
@@ -467,6 +468,29 @@ export const historyData = [
     address: "0x234567890abcdef1234567890abcdef23456789",
     date: "2024-12-15 18:20",
     result: "Успех",
+  },
+];
+export const serviceData = [
+  {
+    id: "1",
+    service: "0x1234567890abcdef1234567890abcdef12345678",
+    idData: "2024-12-17 10:30",
+    confirmed: checkIcon,
+    modern: closeIcon,
+  },
+  {
+    id: "2",
+    service: "0x1234567890abcdef1234567890abcdef12345678",
+    idData: "2024-12-17 10:30",
+    confirmed: checkIcon,
+    modern: closeIcon,
+  },
+  {
+    id: "3",
+    service: "0x1234567890abcdef1234567890abcdef12345678",
+    idData: "2024-12-17 10:30",
+    confirmed: checkIcon,
+    modern: closeIcon,
   },
 ];
 

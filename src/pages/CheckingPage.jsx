@@ -1,8 +1,18 @@
+import { useQuery } from "@tanstack/react-query";
 import { Blockchein } from "../constants";
+import { getBlockcheinAsync } from "../api/blockchein";
 import HistoryCheck from "../entities/checking/HistoryCheck";
-import ListHistoryCheck from "../entities/checking/ListHistoryCheck";
+// import HistoryCheck from "../entities/checking/HistoryCheck";
+// import ListHistoryCheck from "../entities/checking/ListHistoryCheck";
 
 const CheckingPage = () => {
+  const { data } = useQuery({
+    queryKey: ["blockchein"],
+    queryFn: getBlockcheinAsync,
+  });
+
+  console.log(data);
+
   return (
     <div className="container mx-auto py-20">
       <h1 className="text-5xl font-bold py-6">Проверка AML</h1>
@@ -23,15 +33,20 @@ const CheckingPage = () => {
             <h1 className="text-black text-2xl font-semibold pb-4 pl-2">
               2. Укажите блокчейн
             </h1>
-            <div className="grid lg:grid-cols-5 md:grid-cols-2 gap-2">
-              {Blockchein.map((chein) => (
+            <div className="grid grid-cols-3 gap-5">
+              {data?.map((chain) => (
                 <div
-                  key={chein.id}
+                  key={chain.id}
                   className="flex  justify-center bg-white rounded-xl px-16 py-6"
                 >
-                  <img src={chein.logo} alt="" className="object-contain" />
+                  <img
+                    src={chain.logo}
+                    alt=""
+                    width="30px"
+                    className="object-contain"
+                  />
                   <p className="px-4 font-semibold text-gray-700 text-xl">
-                    {chein.text}
+                    {chain.name}
                   </p>
                 </div>
               ))}
@@ -42,7 +57,6 @@ const CheckingPage = () => {
           </button>
         </div>
         <HistoryCheck />
-        <ListHistoryCheck />
       </div>
     </div>
   );
