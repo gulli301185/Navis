@@ -22,7 +22,7 @@ const AllNews = () => {
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-3 gap-y-5">
         {data?.map((news, index) => (
           <Link
-            to={`/newsDetail/${index + 1}`}
+            to={`/news/detail/${news.slug}`}
             key={index}
             className="flex flex-col bg-gray-100 rounded-xl "
           >

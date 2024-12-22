@@ -7,7 +7,6 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = JSON.parse(localStorage.getItem("token") || "{}");
-    console.log(token);
 
     config.headers = {
       "Content-Type": "application/json",

@@ -18,7 +18,7 @@ export const HelpInfo = () => {
             {`Техническая поддержка,\n сотрудничество и PR`}
           </h1>
           <div className="font-semibold ">
-            <div className="flex gap-4 pb-6 flex-col md:flex-row">
+            <div className="flex gap-4 pb-6 flex-col md:flex-row cursor-pointer">
               <img src={addressIcon} alt="" className="object-contain w-7" />
               <p>
                 Кыргызская республика, г.Бишкек, Проспект Манаса <br /> 64/1
@@ -26,15 +26,15 @@ export const HelpInfo = () => {
             </div>
             <div className="flex gap-4 pb-6 flex-col md:flex-row">
               <img src={phoneIcon} alt="" className="object-contain w-7" />
-              <div>
+              <div className="cursor-pointer">
                 <div>+996 (502)-800-202 </div>
                 <div>+996 (502)-800-202 </div>
               </div>
             </div>
-            <div className="flex gap-4 pb-6 flex-col md:flex-row">
+            <a href="/" className="flex gap-4 pb-6 flex-col md:flex-row">
               <img src={mailIcon} alt="" className="object-contain w-7" />
               <p>navischange@mail.com</p>
-            </div>
+            </a>
           </div>
           <div className="text-xl font-bold">
             {" "}
@@ -44,7 +44,7 @@ export const HelpInfo = () => {
                 <img
                   src={WhatsApp}
                   alt="WhatsApp"
-                  className="object-contain w-10"
+                  className="object-contain w-10 cursor-pointer"
                 />
                 <img
                   src={Telegram}
@@ -54,12 +54,12 @@ export const HelpInfo = () => {
                 <img
                   src={Instagram}
                   alt="WhatsApp"
-                  className="object-contain w-10"
+                  className="object-contain w-10 cursor-pointer"
                 />
                 <img
                   src={Music}
                   alt="WhatsApp"
-                  className="object-contain w-10"
+                  className="object-contain w-10 cursor-pointer"
                 />
               </div>
             </div>

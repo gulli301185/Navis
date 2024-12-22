@@ -1,12 +1,12 @@
-import NoteIcon from "../assets/accadionIcons/ic_notifications_none_48px.png";
-import toggleIcon from "../assets/accadionIcons/toogles.png";
-import logoutIcon from "../assets/accadionIcons/logout.png";
-import closeIcon from "../assets/accadionIcons/close.png";
+import closeIcon from "../../assets/accadionIcons/close.png";
 import { useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { getProfileAsync, patchProfileAsync } from "../api/profil";
-import { Switch } from "@mantine/core";
+import { getProfileAsync, patchProfileAsync } from "../../api/profil";
+
 import { useFormik } from "formik";
+
+import ProtectedProfile from "./ProtectedProfile";
+import Settings from "./Settings";
 
 const Profile = () => {
   const [changeData, setChangeData] = useState(false);
@@ -35,7 +35,6 @@ const Profile = () => {
       patchUserProfileMutation.mutate(newValue);
     },
   });
-  console.log(formik.values);
 
   const changeHandle = () => {
     setChangeData(!changeData);
@@ -50,17 +49,17 @@ const Profile = () => {
     <div className="container mx-auto h-full my-10">
       <h1 className="text-5xl pb-5 p font-bold ">Профиль</h1>
       <div className=" rounded-2xl flex flex-col gap-2 h-full">
-        <div className="flex gap-2 ">
+        <div className="grid grid-cols-2 gap-2 ">
           <div className="bg-gray-100 rounded-2xl w-full min-h-full ">
             <h1 className="font-bold text-2xl p-5">Личные данные</h1>
             <div className="bg-white rounded-2xl mx-5 mb-5 max-h-full p-5">
               <div className="pb-5">
-                <label htmlFor="" className=" text-gray-400 pl-3 ">
+                <label htmlFor="" className=" text-gray-400 pl- ">
                   ФИО:
                 </label>
                 <input
                   value={data?.full_name}
-                  className="py-4 bg-gray-200 rounded-xl w-full"
+                  className="py-4 px-4 bg-gray-200 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -69,7 +68,7 @@ const Profile = () => {
                 </label>
                 <input
                   value={data?.email}
-                  className="py-4 bg-gray-200 rounded-xl w-full"
+                  className="py-4 px-4 bg-gray-200 rounded-xl w-full"
                 />
               </div>
               <div className="p-3">
@@ -82,73 +81,9 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <div className="bg-gray-100 rounded-2xl w-full min-h-full ">
-            <h1 className="font-bold text-2xl p-5">Настройки</h1>
-            <div className=" rounded-2xl mx-5 mb-5 max-h-full flex flex-col gap-4 ">
-              <div className=" bg-white  rounded-xl py-7 flex justify-between">
-                <div className="flex">
-                  <img
-                    src={NoteIcon}
-                    alt=""
-                    className="px-2 font-semibold text-lg text-black"
-                  />
-                  Уведомление
-                </div>
-                <img src={toggleIcon} alt="" className="object-contain pr-2" />
-              </div>
-              <div className=" bg-white  rounded-xl py-7 flex ">
-                <img src={logoutIcon} alt="" className="px-3" />
-                Выйти с аккаунта
-              </div>
-              <div className=" bg-white  rounded-xl py-7 flex ">
-                <img src={logoutIcon} alt="" className="px-3" />
-                Удалить аккаунт
-              </div>
-            </div>
-          </div>
+          <Settings />
         </div>
-        <div className="bg-gray-100 rounded-2xl w-full min-h-full ">
-          <h1 className="font-bold text-2xl p-5">Безопасность</h1>
-          <div className=" rounded-2xl mx-5 mb-5 max-h-full flex flex-col gap-4 ">
-            <div className=" bg-white  rounded-xl py-4 flex justify-between px-4">
-              <div>
-                <h1 className="font-semibold text-black text-xl">API Keys</h1>
-                <p className="text-gray-500">
-                  Ключ доступа не установлен. Доступ через API отключен
-                </p>
-              </div>
-              <button className="w-[156px] text-red-600 flex border-2 rounded-xl items-center border-red-600 font-bold justify-center">
-                Получить ключ
-              </button>
-            </div>
-            <div className=" bg-white  rounded-xl py-4 flex justify-between px-4">
-              <div>
-                <h1 className="font-semibold text-black text-lg">
-                  Двухфакторная аутентификация
-                </h1>
-                <p className="text-gray-500">
-                  Включите 2FA, чтобы повысить безопасность вашего аккаунта.
-                </p>
-              </div>
-              <Switch
-                checked={data?.is_two_factor_enabled}
-                color="red"
-                className="items-center flex justify-center"
-              />
-            </div>
-            <div className=" bg-white  rounded-xl py-4 flex justify-between px-4">
-              <div>
-                <h1 className="font-semibold text-black text-xl">
-                  Сменить пароль
-                </h1>
-                <div>............</div>
-              </div>
-              <button className="w-[156px] text-red-600 flex  items-center border-red-600 border-2 rounded-xl font-bold justify-center">
-                Изменить
-              </button>
-            </div>
-          </div>
-        </div>
+        <ProtectedProfile data={data} />
         {changeData && (
           <form
             onSubmit={formik.handleSubmit}

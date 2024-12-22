@@ -11,16 +11,18 @@ import ServiceCard from "../entities/serviceCard/ServiceCard";
 import Client from "../entities/client/Client";
 import Analize from "../pages/Analize";
 import Price from "../pages/Price";
-import Profile from "../pages/Profile";
+import Profile from "../pages/profile/Profile";
 import { HelpInfo } from "../pages/HelpInfo";
 import TariffPage from "../pages/TariffPage";
-import Integration from "../pages/Integration";
 import ComplaneDetails from "../pages/ComplaneDetails";
-import CheckingComplanePage from "../pages/CheckingComplanePage";
+// import CheckingComplanePage from "../pages/CheckingComplanePage";
 import CheckingPage from "../pages/CheckingPage";
 import { CheckResult } from "../entities/checking/CheckResult";
 import SecondHeader from "../shared/header/SecondHeader";
 import PopularQuestion from "../entities/questions/PopularQuestion";
+import ChangeService from "../pages/service/ServiceDetail";
+import ServiceDetail from "../pages/service/ServiceDetail";
+import Integration from "../pages/service/Integration";
 
 export const routes = createBrowserRouter([
   {
@@ -29,17 +31,14 @@ export const routes = createBrowserRouter([
     children: [
       { element: <Home />, path: "/" },
       { element: <About />, path: "about" },
-      { element: <AllNews />, path: "allNews" },
-      { element: <NewsDetail />, path: "news/:id" },
-      { element: <Protectedervice />, path: "protectedService" },
+      { element: <AllNews />, path: "allNews/" },
+      { element: <NewsDetail />, path: "news/detail/:slug" },
+      { element: <Protectedervice />, path: "services/detail/:slug" },
       { element: <ServiceCard />, path: "service" },
       { element: <Client />, path: "partner" },
       { element: <Analize />, path: "analize" },
       { element: <Price />, path: "price" },
-      { element: <Profile />, path: "profile" },
-      { element: <HelpInfo />, path: "help" },
-      { element: <TariffPage />, path: "tariff" },
-      { element: <Integration />, path: "integration" },
+
       { element: <PopularQuestion />, path: "question" },
       // { element: <CheckingComplanePage />, path: "checking" },
       { element: <ComplaneDetails />, path: "checkDetail" },
@@ -53,6 +52,8 @@ export const routes = createBrowserRouter([
           { element: <HelpInfo />, path: "help" },
           { element: <TariffPage />, path: "tariff" },
           { element: <Integration />, path: "integration" },
+          { element: <ServiceDetail />, path: "integration/:id" },
+
           { element: <CheckingPage />, path: "check" },
           { element: <ComplaneDetails />, path: "checkDetail" },
         ],

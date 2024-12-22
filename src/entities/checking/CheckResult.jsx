@@ -11,7 +11,7 @@ export const CheckResult = () => {
   const { address } = location.state || {};
 
   const [state, setState] = useState({
-    series: [14, 23, 21, 17, 15, 10, 12, 17, 21],
+    series: [30, 10, 50, 30, 100],
     options: {
       chart: {
         type: "bar",
@@ -23,7 +23,7 @@ export const CheckResult = () => {
         opacity: 0.8,
       },
       labels: [
-        "Category 1",
+        "Санкции 60%",
         "Category 2",
         "Category 3",
         "Category 4",
@@ -57,11 +57,11 @@ export const CheckResult = () => {
     ],
     options: {
       chart: {
-        type: "bar", 
+        type: "bar",
       },
       plotOptions: {
         bar: {
-          horizontal: true, 
+          horizontal: true,
           endingShape: "flat",
         },
       },
@@ -158,15 +158,15 @@ export const CheckResult = () => {
               />
             </div>
             <div className="bg-white rounded-xl p-5">
-            <ReactApexChart
-              series={stateBar.series}
-              options={stateBar.options}
-              type="bar"
-            />
+              <ReactApexChart
+                series={stateBar.series}
+                options={stateBar.options}
+                type="bar"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

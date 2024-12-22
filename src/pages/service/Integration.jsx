@@ -1,10 +1,10 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useFormik } from "formik";
-import closeIcon from "../assets/accadionIcons/close.png";
+import closeIcon from "../../assets/accadionIcons/close.png";
 
-import { postServiceAsync } from "../api/service";
-import { getIntegrationAsync } from "../api/integration";
+import { postServiceAsync } from "../../api/service";
+import { getIntegrationAsync } from "../../api/integration";
 import IntegrationList from "./IntegrationList";
 
 const Integration = () => {

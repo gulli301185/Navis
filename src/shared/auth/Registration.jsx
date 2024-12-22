@@ -1,7 +1,5 @@
-import { useState } from "react";
 import authBanner from "../../assets/bitcoinBanner/authBanner.png";
 import mainLogo from "../../assets/headerIcons/Union.svg";
-import showIcon from "../../assets/accadionIcons/showIcon.png";
 import { Link } from "react-router";
 import { useFormik } from "formik";
 import * as Yup from "yup";

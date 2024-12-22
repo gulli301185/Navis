@@ -7,6 +7,7 @@ import { getProfileAsync } from "../../api/profil";
 import mainHeaderIcon from "../../assets/headerIcons/sign.png";
 import { NativeSelect } from "@mantine/core";
 import { useLanguage } from "../../store/language";
+import { IconChevronDown } from "@tabler/icons-react";
 
 const MainHeader = () => {
   const { language, setLanguage } = useLanguage((state) => state);
@@ -33,12 +34,28 @@ const MainHeader = () => {
         {!data ? (
           <div className=" flex gap-2">
             <NativeSelect
+              size="25px"
+              className="text-2xl flex items-center justify-center pr-5"
+              rightSection={
+                <IconChevronDown
+                  style={{
+                    width: "25px",
+                    height: "25px",
+                  }}
+                />
+              }
               data={[
                 { label: "RU", value: "ru" },
                 { label: "EN", value: "en" },
               ]}
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
+              styles={{
+                input: {
+                  border: "none",
+                  outline: "none",
+                },
+              }}
             />
             <NavLink
               to="personal"
@@ -56,12 +73,28 @@ const MainHeader = () => {
         ) : (
           <div className=" flex gap-2">
             <NativeSelect
+              size="25px"
+              className="text-2xl flex items-center justify-center pr-5"
+              rightSection={
+                <IconChevronDown
+                  style={{
+                    width: "25px",
+                    height: "25px",
+                  }}
+                />
+              }
               data={[
                 { label: "RU", value: "ru" },
                 { label: "EN", value: "en" },
               ]}
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
+              styles={{
+                input: {
+                  border: "none",
+                  outline: "none",
+                },
+              }}
             />
             <Link to="/secondHeader">
               <img src={mainHeaderIcon} alt="" />

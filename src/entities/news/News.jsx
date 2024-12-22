@@ -27,7 +27,7 @@ const News = () => {
       <div className="grid grid-cols-3 container gap-2 ">
         {data?.map((news, index) => (
           <Link
-            to={`/newsDetail/${index + 1}`}
+            to={`/news/detail/${news.slug}`}
             key={index}
             className="flex flex-col bg-gray-100 rounded-xl "
           >

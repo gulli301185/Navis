@@ -1,6 +1,7 @@
 import { useState } from "react";
 import authBanner from "../../assets/bitcoinBanner/authBanner.png";
 import mainLogo from "../../assets/headerIcons/Union.svg";
+import { useDisclosure } from "@mantine/hooks";
 
 import showIcon from "../../assets/accadionIcons/showIcon.png";
 import { Link, useNavigate } from "react-router";
@@ -8,6 +9,7 @@ import { useFormik } from "formik";
 import { useMutation } from "@tanstack/react-query";
 import { postLoginAsync } from "../../api/login";
 import * as Yup from "yup";
+import ModalData from "./ModalData";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -21,6 +23,7 @@ const validationSchema = Yup.object({
 export const PersonalAuth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const [opened, { open, close }] = useDisclosure(false);
 
   const postLoginQuery = useMutation({
     mutationFn: postLoginAsync,
@@ -50,6 +53,7 @@ export const PersonalAuth = () => {
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
+
   return (
     <form
       onSubmit={formik.handleSubmit}
@@ -104,10 +108,12 @@ export const PersonalAuth = () => {
               </span>
             )}
           </button>
-          <div className="text-red-700 flex justify-end font-semibold">
-            <a href="" className="border-b-2 border-red-700 text-base">
-              Забыли пароль ?
-            </a>
+          <div
+            onClick={open}
+            className="text-red-700 flex justify-end font-semibold"
+          >
+            {/* <a href="" className="border-b-2 border-red-700 text-base"> */}
+            Забыли пароль ?{/* </a> */}
           </div>
           <button
             type="submit"
@@ -123,6 +129,7 @@ export const PersonalAuth = () => {
             >
               Зарегистрироваться
             </Link>{" "}
+            <ModalData opened={opened} close={close} />
           </div>
         </div>
       </div>

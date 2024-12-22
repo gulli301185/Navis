@@ -1,9 +1,10 @@
-import { getIntegrationAsync } from "../api/integration";
+import { getIntegrationAsync } from "../../api/integration";
 import { useQuery } from "@tanstack/react-query";
-import CapaIcon from "../assets/bitcoinLogo/Capa_1.png";
-import showIcon from "../assets/cardIcon/FrameIcon.png";
-import checkIcon from "../assets/accadionIcons/check.png";
-import closeIcon from "../assets/accadionIcons/close.png";
+import CapaIcon from "../../assets/bitcoinLogo/Capa_1.png";
+import showIcon from "../../assets/cardIcon/FrameIcon.png";
+import checkIcon from "../../assets/accadionIcons/check.png";
+import closeIcon from "../../assets/accadionIcons/close.png";
+import { Link } from "react-router";
 
 const IntegrationList = () => {
   const { data } = useQuery({
@@ -75,11 +76,14 @@ const IntegrationList = () => {
                     />
                   )}
                 </td>
-                <td className=" rounded-r-2xl">
+                <Link
+                  to={"/secondHeader/integration/" + service.id}
+                  className=" rounded-r-2xl"
+                >
                   <button className="text-red-500 px-6 border-red-300 border-2 rounded-xl gap-2 flex items-center justify-center mt-3">
                     <img src={showIcon} alt="" /> Изменить
                   </button>
-                </td>
+                </Link>
               </tr>
             ))}
           </tbody>
