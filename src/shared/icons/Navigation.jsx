@@ -1,5 +1,5 @@
 // eslint-disable-next-line react/prop-types
-const NavigationIcon = ({ path, ...props }) => {
+const NavigationIcon = ({ paths, ...props }) => {
   return (
     <svg
       width="24"
@@ -15,7 +15,7 @@ const NavigationIcon = ({ path, ...props }) => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        {...path}
+        {...paths}
       />
     </svg>
   );
