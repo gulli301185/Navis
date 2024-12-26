@@ -7,8 +7,8 @@ const Team = () => {
     queryFn: getOurTeamAsync,
   });
   return (
-    <div className="container mx-auto">
-      <h1 className="text-3xl font-bold pt-40 pb-10">Наша команда</h1>
+    <div className="container mx-auto pt-40 ">
+      <h1 className="text-[40px] font-bold  text-center pb-5">Наша команда</h1>
       <div className="container grid grid-cols-4 gap-4">
         {data?.map((team) => (
           <div key={team.id} className="rounded-lg text-start">

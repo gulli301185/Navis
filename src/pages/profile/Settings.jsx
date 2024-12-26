@@ -6,6 +6,7 @@ import {
   deleteDeletedAccountAsync,
   postLogoutAsync,
 } from "../../api/deletedAccount";
+import { toast, ToastContainer } from "react-toastify";
 
 const Settings = () => {
   const deleteDeletedAccount = useMutation({
@@ -15,7 +16,9 @@ const Settings = () => {
   });
   const logoutAccount = useMutation({
     mutationFn: postLogoutAsync,
-    onSuccess: () => {},
+    onSuccess: () => {
+      toast("You have logged out");
+    },
     onError: () => {},
   });
 
@@ -57,6 +60,7 @@ const Settings = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

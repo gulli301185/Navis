@@ -1,23 +1,28 @@
 import { Modal, PasswordInput } from "@mantine/core";
 import { Switch } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
-import {
-  postDisabledDataAsync,
-  postEnableDataAsync,
-} from "../../api/disabledData";
-import { useMutation, useQueries } from "@tanstack/react-query";
+// import { useDisclosure } from "@mantine/hooks";
+// import {
+//   postDisabledDataAsync,
+//   postEnableDataAsync,
+// } from "../../api/disabledData";
+// import { useMutation } from "@tanstack/react-query";
 import { useFormik } from "formik";
-import { postChangePassword } from "../../api/changePassword";
+// import { postChangePassword } from "../../api/changePassword";
 import * as Yup from "yup";
+// import { toast } from "react-toastify";
 
 const ProtectedProfile = ({ data }) => {
-  const [opened, { open, close }] = useDisclosure(false);
+  // const [opened, { open, close }] = useDisclosure(false);
 
-  const patchChangeMutation = useMutation({
-    mutationFn: postChangePassword,
-    onSuccess: () => {},
-    onError: () => {},
-  });
+  // const patchChangeMutation = useMutation({
+  //   mutationFn: postChangePassword,
+  //   onSuccess: () => {
+  //     toast("success");
+  //   },
+  //   onError: () => {
+  //     toast("invalid");
+  //   },
+  // });
 
   const validationSchema = Yup.object({
     password: Yup.string()
@@ -38,33 +43,33 @@ const ProtectedProfile = ({ data }) => {
     onSubmit: (newValue) => {
       console.log(newValue);
 
-      patchChangeMutation.mutate(newValue);
+      //     patchChangeMutation.mutate(newValue);
     },
   });
 
-  console.log(formik.errors);
+  // console.log(formik.errors);
 
-  const patchDisabledDataAsync = useMutation({
-    mutationFn: postDisabledDataAsync,
-    onSuccess: () => {},
-  });
-  const patchEnableDataAsync = useMutation({
-    mutationFn: postEnableDataAsync,
-    onSuccess: () => {},
-  });
+  // const patchDisabledDataAsync = useMutation({
+  //   mutationFn: postDisabledDataAsync,
+  //   onSuccess: () => {},
+  // });
+  // const patchEnableDataAsync = useMutation({
+  //   mutationFn: postEnableDataAsync,
+  //   onSuccess: () => {},
+  // });
 
-  const disabledDatas = () => {
-    console.log(data);
+  // const disabledDatas = () => {
+  //   console.log(data);
 
-    const userInfo = JSON.parse(localStorage.getItem("token"));
-    console.log(userInfo);
+  //   const userInfo = JSON.parse(localStorage.getItem("token"));
+  //   console.log(userInfo);
 
-    if (data.is_two_factor_enabled) {
-      patchDisabledDataAsync.mutate({ opt: userInfo.opt });
-    } else {
-      patchEnableDataAsync.mutate({ opt: userInfo.opt });
-    }
-  };
+  //   if (data?.is_two_factor_enabled) {
+  //     patchDisabledDataAsync.mutate({ opt: userInfo.opt });
+  //   } else {
+  //     patchEnableDataAsync.mutate({ opt: userInfo.opt });
+  //   }
+  // };
   return (
     <div>
       <div className="bg-gray-100 rounded-2xl w-full min-h-full ">
@@ -134,7 +139,6 @@ const ProtectedProfile = ({ data }) => {
                   formik.touched.password &&
                   formik.errors.password
                 }
-                // className="py-3 pl-3 bg-gray-200 rounded-md w-full mb-3 outline-none"
               />
               <PasswordInput
                 styles={{
@@ -156,7 +160,6 @@ const ProtectedProfile = ({ data }) => {
                   formik.errors.confirm_password
                 }
                 placeholder="confirm password"
-                // className="py-3 pl-3 bg-gray-200 rounded-md w-full outline-none "
               />
               <button
                 type="submit"

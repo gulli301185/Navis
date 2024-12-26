@@ -2,7 +2,7 @@ import { PriceInfo } from "../constants";
 
 const Price = () => {
   return (
-    <div className="container mx-auto flex gap-10 flex-col py-20">
+    <div className="container mx-auto flex gap-10 flex-col pt-20">
       <h1 className="text-5xl font-semibold text-center">
         Безопасность — Ваш Лучший Инвестор!
       </h1>
@@ -17,10 +17,10 @@ const Price = () => {
           >
             <div className="flex justify-between ">
               <div>
-                <h1 className="text-2xl font-semibold group-hover:text-white">
+                <h1 className="text-2xl font-semibold group-hover:text-white ">
                   {priceItem.topic}
                 </h1>
-                <p className="text-gray-500 w-1/2 ">{priceItem.text}</p>
+                <p className="text-gray-500  ">{priceItem.text}</p>
               </div>
               <div>
                 <h1 className="text-5xl font-bold text-end group-hover:text-white">

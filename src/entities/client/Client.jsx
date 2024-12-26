@@ -44,14 +44,16 @@ const Client = () => {
       <h1 className="pb-9 text-center text-4xl font-semibold">
         Наши довольные клиенты и партнеры
       </h1>
-      <Slider {...settings} className="max-w-full">
+      <Slider {...settings} className="">
         {data?.map((partner) => (
           <div
             key={partner.id}
-            className="bg-slate-300 rounded-lg text-center flex flex-col p-5 "
+            className="bg-slate-300 rounded-lg text-center flex flex-col  py-5"
           >
-            <img src={partner.image} alt="" className="mx-auto w-32 pb-3" />
-            <a href="">{partner.url}</a>
+            <img src={partner.image} alt="" className="mx-auto " />
+            <a href="" className="">
+              {partner.url}
+            </a>
           </div>
         ))}
       </Slider>

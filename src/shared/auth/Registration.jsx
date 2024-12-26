@@ -85,7 +85,6 @@ export const Registration = () => {
               formik.errors.email && formik.touched.email && formik.errors.email
             }
           />
-
           <PasswordInput
             styles={{
               input: {
@@ -108,7 +107,6 @@ export const Registration = () => {
               formik.errors.password
             }
           />
-
           <PasswordInput
             styles={{
               input: {
@@ -131,7 +129,6 @@ export const Registration = () => {
               formik.errors.confirm_password
             }
           />
-
           <button
             type="submit"
             className="bg-orange-600 outline-none text-white items-center justify-center flex rounded-lg py-3"

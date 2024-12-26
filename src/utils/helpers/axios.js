@@ -11,6 +11,8 @@ axiosInstance.interceptors.request.use(
     config.headers = {
       "Content-Type": "application/json",
       ...config.headers,
+
+      Authorization: `Bearer ${token}`,
     };
 
     if ("email" in token) {

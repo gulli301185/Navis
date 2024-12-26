@@ -7,7 +7,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <div className="min-h-[360px]  bg-black text-white flex items-center hover:bg-white hover:text-black group">
+    <div className="min-h-[360px]  bg-black text-white flex items-center mt-[210px] hover:bg-white hover:text-black group">
       <div className="w-full ">
         <div className="container   mx-auto flex justify-between flex-col lg:flex-row  mb-14">
           <div className="flex flex-col gap-6 w-full sm:w-80">
@@ -37,7 +37,7 @@ const Footer = () => {
                 <li>Контакты</li>
                 <Link to="/partner">Партнеры</Link>
                 <Link
-                  to="/service"
+                  to="/info"
                   className="whitespace-pre-line"
                 >{`Почему \nNavisAsset?`}</Link>
               </ul>
@@ -45,9 +45,7 @@ const Footer = () => {
             <div className="flex flex-col gap-7">
               <p>Пользователям</p>
               <ul className="text-gray-500 flex space-y-4 flex-col">
-                <Link to={{ pathname: "/protectedService", hash: "service" }}>
-                  Услуги
-                </Link>
+                <Link to={{ pathname: "/service" }}>Услуги</Link>
                 <li>Отзывы</li>
                 <Link to="/price">Прайс</Link>
                 <Link to="/news">Новости</Link>

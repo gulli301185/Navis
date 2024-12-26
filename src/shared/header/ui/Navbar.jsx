@@ -25,7 +25,7 @@ const NavItems = [
   {
     id: "5",
     title: "Блог",
-    page: "allNews",
+    page: "news/allNews",
   },
   {
     id: "6",
@@ -36,7 +36,7 @@ const NavItems = [
 
 const Navbar = () => {
   return (
-    <div className="flex gap-16 text-gray-900 font-normal text-lg ">
+    <div className="flex gap-10 text-gray-900 font-normal text-lg ">
       {NavItems.map((item) => (
         <NavLink
           key={item.id}

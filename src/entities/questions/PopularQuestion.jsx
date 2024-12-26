@@ -1,4 +1,3 @@
-import CardMain from "../../shared/card/CardMain";
 import Mental from "../../assets/cardIcon/MentalIcon.png";
 import Accordion from "../../components/ui/Accardeon";
 import { useState } from "react";
@@ -8,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getPopularQuestionsAsynk } from "../../api/popularQuestions";
 import { useLanguage } from "../../store/language";
 
-function PopularQuestion({ className, children }) {
+function PopularQuestion() {
   const [openIndex, setOpenIndex] = useState(null);
   const language = useLanguage((state) => state.language);
 
@@ -21,25 +20,22 @@ function PopularQuestion({ className, children }) {
     setOpenIndex(openIndex === index ? null : index);
   };
   return (
-    <div className="container py-40 mx-auto">
-      <h1 className="text-3xl font-bold pb-8">Популярные вопросы</h1>
-      <div className="grid grid-cols-3  gap-20 ">
-        <CardMain className="h-[545px]  bg-gradient-to-bl to-red-700 from-orange-600 relative ">
-          <div>
-            <h1 className="text-2xl text-white w-72 text-start font-semibold">
+    <div className="container pt-40 mx-auto">
+      <h1 className="text-[40px] font-bold pb-8 text-center">
+        Популярные вопросы
+      </h1>
+      <div className="grid grid-cols-3  gap-10">
+        <div className="h-[545px]  flex  flex-col justify-between p-7 rounded-2xl  bg-gradient-to-bl to-red-700 from-orange-600 relative ">
+          <div className="flex flex-col gap-5">
+            <h1 className="text-[26px] leading-tight text-white w-72 text-start font-semibold">
               Интегрированная платформа обеспечения соответвия
             </h1>
             <p className="text-gray-100 text-start  w-72 text-lg">
               AMLBot автоматизирует AML / KYC процедуры и снижает расходы{" "}
             </p>
           </div>
-          <img
-            src={Mental}
-            width="407px"
-            alt=""
-            className=" absolute -bottom-4"
-          />
-        </CardMain>
+          <img src={Mental} alt="" className="-bottom-0 left-0 absolute" />
+        </div>
         <div className="col-span-2">
           {data?.map((info, index) => (
             <Accordion key={info.id}>
