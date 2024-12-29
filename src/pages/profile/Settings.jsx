@@ -7,17 +7,26 @@ import {
   postLogoutAsync,
 } from "../../api/deletedAccount";
 import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const Settings = () => {
+  const navigate = useNavigate();
+
   const deleteDeletedAccount = useMutation({
     mutationFn: deleteDeletedAccountAsync,
-    onSuccess: () => {},
+    onSuccess: () => {
+      localStorage.removeItem("token");
+      toast("вы успешно удалили аккаунт");
+      navigate("/register");
+    },
     onError: () => {},
   });
   const logoutAccount = useMutation({
     mutationFn: postLogoutAsync,
     onSuccess: () => {
+      localStorage.removeItem("token");
       toast("You have logged out");
+      navigate("/personal");
     },
     onError: () => {},
   });

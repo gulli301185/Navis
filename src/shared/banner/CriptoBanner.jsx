@@ -1,13 +1,3 @@
-// import CriptoBannerIcon from "../../assets/bitcoinBanner/banner.svg";
-
-// export const CriptoBanner = () => {
-//   return (
-//     <div className="">
-//       <img src={CriptoBannerIcon} alt="*" width="100%" />
-//     </div>
-//   );
-// };
-
 import d3Logo from "../../assets/bitcoinLogo/Ediable 3D icons (1).png";
 import mindsetLogo from "../../assets/bitcoinLogo/7_Mindset_3D_Metal_Security (1).png";
 import BLogo from "../../assets/bitcoinLogo/Bitcoin (BTC).png";

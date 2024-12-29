@@ -35,7 +35,7 @@ const HistoryCheck = () => {
         <div className="text-center items-center flex flex-col lg:px-80 py-10 gap-3">
           <img src={CapaIcon} alt="" />
           <p className="font-bold">Здесь будет история ваших чеков</p>
-          <p className="text-gray-500 px-40">
+          <p className="text-gray-500 px-2">
             Проверьте адреса на наличие «грязных» денег. Защититесь от
             мошенников, мошенничества и украденных токенов
           </p>

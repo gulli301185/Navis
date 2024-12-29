@@ -6,13 +6,13 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
+    console.log(config);
+
     const token = JSON.parse(localStorage.getItem("token") || "{}");
 
     config.headers = {
       "Content-Type": "application/json",
       ...config.headers,
-
-      Authorization: `Bearer ${token}`,
     };
 
     if ("email" in token) {

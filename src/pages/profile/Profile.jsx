@@ -24,7 +24,7 @@ const Profile = () => {
       console.log(token);
 
       setChangeData(false);
-      localStorage.setItem("token", JSON.stringify(token));
+
       toast("Данные успешно обновлены");
     },
     onError: () => {},

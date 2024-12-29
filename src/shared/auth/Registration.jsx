@@ -1,6 +1,6 @@
 import authBanner from "../../assets/bitcoinBanner/authBanner.png";
 import mainLogo from "../../assets/headerIcons/Union.svg";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useMutation } from "@tanstack/react-query";
@@ -22,10 +22,13 @@ const validationSchema = Yup.object({
 });
 
 export const Registration = () => {
+  const navigate = useNavigate();
+
   const postRegistrationQuery = useMutation({
     mutationFn: postRegistrationAsync,
     onSuccess: () => {
       toast.success("Регистрация прошла успешно!");
+      navigate("/personal");
     },
     onError: (error) => {
       toast.error("Ошибка регистрации: " + error.message);

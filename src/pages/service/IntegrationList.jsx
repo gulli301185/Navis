@@ -8,9 +8,11 @@ import { Link } from "react-router";
 
 const IntegrationList = () => {
   const { data } = useQuery({
-    queryKey: ["history"],
+    queryKey: ["integration"],
     queryFn: getIntegrationAsync,
   });
+  console.log(data);
+
   return (
     <div className="w-full rounded-2xl bg-gray-100 p-5 flex flex-col gap-10">
       {!data ? (

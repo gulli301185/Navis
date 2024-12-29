@@ -79,8 +79,7 @@ import Price from "../pages/Price";
 import Profile from "../pages/profile/Profile";
 import { HelpInfo } from "../pages/HelpInfo";
 import TariffPage from "../pages/TariffPage";
-// import ComplaneDetails from "../pages/check/ComplaneDetails";
-// import { CheckResult } from "../entities/checking/CheckResult";
+import ComplaneDetails from "../pages/check/ComplaneDetails";
 import SecondHeader from "../shared/header/SecondHeader";
 import PopularQuestion from "../entities/questions/PopularQuestion";
 import ServiceDetail from "../pages/service/ServiceDetail";
@@ -88,8 +87,10 @@ import Integration from "../pages/service/Integration";
 import News from "../pages/news/News";
 import NewsDetail from "../pages/news/NewsDetail";
 import AllNews from "../pages/news/AllNews";
-// import CheckingPage from "../pages/check/CheckingPage";
+import CheckingPage from "../pages/check/CheckingPage";
 import InfoCard from "../entities/info/InfoCard";
+import HistoryCheck from "../entities/checking/HistoryCheck";
+import { CheckResult } from "../entities/checking/CheckResult";
 
 export const routes = createBrowserRouter([
   {
@@ -108,18 +109,22 @@ export const routes = createBrowserRouter([
       { element: <News />, path: "news" },
       { element: <InfoCard />, path: "info" },
       { element: <PopularQuestion />, path: "question" },
-      // { element: <CheckResult />, path: "result" },
       {
         element: <SecondHeader />,
         path: "secondHeader",
         children: [
-          // { index: true, element: <CheckingPage /> },
+          { index: true, element: <CheckingPage /> },
           { element: <Profile />, path: "profile" },
           { element: <HelpInfo />, path: "help" },
           { element: <TariffPage />, path: "tariff" },
           { element: <Integration />, path: "integration" },
           { element: <ServiceDetail />, path: "integration/:id" },
-          // { element: <ComplaneDetails />, path: "checkDetail" },
+          { element: <ComplaneDetails />, path: "checkDetail" },
+          { element: <HistoryCheck />, path: "history" },
+          {
+            element: <CheckResult />,
+            path: "checkaddress/:address/:titleId",
+          },
         ],
       },
     ],

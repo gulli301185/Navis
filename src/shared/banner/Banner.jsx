@@ -1,21 +1,3 @@
-// import BannerLogo from "../../assets/bitcoinBanner/BannerLogo.png";
-// import bannerIcon from "../../assets/bitcoinBanner/Glossy.png";
-
-// const Banner = () => {
-//   return (
-//     <div className="container py-32 relative mx-auto">
-//       <img
-//         src={bannerIcon}
-//         alt=""
-//         className="absolute left-[90%] top-16 rotate-12"
-//       />
-//       <img src={BannerLogo} alt="" className="w-full rounded-2xl" />
-//     </div>
-//   );
-// };
-
-// export default Banner;
-
 import ellipsIcon from "../../assets/bitcoinIcons/Ellipse 19 (1).png";
 import bannerIcon from "../../assets/bitcoinIcons/Glossy (2).png";
 import bitcoinIcons from "../../assets/bitcoinIcons/Frame 1 (2).png";
@@ -32,12 +14,12 @@ const Banner = () => {
           />
         </div>
 
-        <div className=" text-center flex flex-col gap-10 items-center justify-center pl-10 mt-20 ">
+        <div className=" text-center flex flex-col gap-5 items-center justify-center pl-10 mt-20 ">
           <p className="text-white text-[40px] text-semibold w-[669px] text-center leading-tight ">
             Мы помогли 300+ криптовалютным организациям всех размеров в 25
             юрисдикциях
           </p>
-          <button className="px-6 py-4 bg-white rounded-xl">
+          <button className="px-6 py-3 bg-white rounded-xl">
             обсудить проект
           </button>
         </div>

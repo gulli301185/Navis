@@ -1,16 +1,14 @@
-
 // const ModalPage = () => {
 //     const [changeData, setChangeData] =useState(false)
 
-    
 //     const closeModal = () => {
-//         console.log("Закрыть модалку"); 
+//         console.log("Закрыть модалку");
 //         setChangeData(false);
 //       };
-    
+
 //       const saveChanges = () => {
 //         console.log("Сохранение изменений");
-//         setChangeData(false); 
+//         setChangeData(false);
 //       };
 //   return (
 //         <div className="fixed inset-0 bg-gray-500 bg-opacity-50 z-50 flex justify-center items-center">
@@ -31,13 +29,13 @@
 //               <div className="flex justify-end gap-2">
 //                 <button
 //                   className="px-4 py-2 bg-gray-300 text-black rounded-lg"
-//                   onClick={closeModal} 
+//                   onClick={closeModal}
 //                 >
 //                   Закрыть
 //                 </button>
 //                 <button
 //                   className="px-4 py-2 bg-blue-600 text-white rounded-lg"
-//                   onClick={saveChanges} 
+//                   onClick={saveChanges}
 //                 >
 //                   Сохранить
 //                 </button>

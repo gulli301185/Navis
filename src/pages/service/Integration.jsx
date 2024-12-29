@@ -11,7 +11,7 @@ const Integration = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["service"],
+    queryKey: ["integration"],
     queryFn: getIntegrationAsync,
   });
 
@@ -71,7 +71,6 @@ const Integration = () => {
         </div>
         <IntegrationList data={data} />
       </div>
-
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-10 rounded-lg w-1/3">

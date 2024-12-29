@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router";
 import showIcon from "../../assets/cardIcon/FrameIcon.png";
@@ -8,8 +9,12 @@ const ListHistoryCheck = ({ data }) => {
   const showDetailHandler = (address) => {
     console.log(address);
 
-    navigate("/result", { state: { address } });
+    navigate(`/checkaddress/detail/${address}${titleId}`, {
+      state: { address },
+    });
   };
+  console.log(data);
+
   return (
     <div className="w-full rounded-2xl bg-gray-100 flex flex-col gap-4">
       <table
@@ -23,7 +28,7 @@ const ListHistoryCheck = ({ data }) => {
             <th>Результат</th>
             <th>Детали</th>
           </tr>
-          <td colSpan={5} className="border-b-2 border-gray-300"></td>
+          <tr colSpan={5} className="border-b-2 border-gray-300"></tr>
         </thead>
         <tbody className="">
           {data &&

@@ -52,9 +52,7 @@ const About = () => {
           </p>
         </div>
       </CardMain>
-      {/* <div className="py- mx-auto"> */}
       <InfoCard />
-      {/* </div> */}
     </div>
   );
 };
